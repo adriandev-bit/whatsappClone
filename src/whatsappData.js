@@ -32,15 +32,7 @@ const whatsappData = [
       mensajes: [
         { id: '1', emisor: 'Yo', texto: 'Hola, María!', hora: '22:10', status: 'visto' },
       ]
-    },
-    { 
-        id: '5', 
-        nombre: 'María', 
-        ultimaConexion: '19:00',
-        mensajes: [
-          { id: '1', emisor: 'Yo', texto: 'Hola, María!', hora: '22:10', status: 'visto' },
-        ]
-      }
+    }
   ];
 
   export default whatsappData;
