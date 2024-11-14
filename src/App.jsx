@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import './App.css';
 import { FaSmile, FaPaperclip, FaMicrophone } from 'react-icons/fa'; // Importa íconos
 import whatsappData from './whatsappData';
@@ -10,6 +10,15 @@ function App() {
   const [contactos, setContactos] = useState(whatsappData);
   const [nuevoMensaje, setNuevoMensaje] = useState('');
   const [contactoSeleccionado, setContactoSeleccionado] = useState(null); // Para almacenar el contacto seleccionado
+
+
+  // Seleccionar el primer contacto por defecto al iniciar
+  useEffect(() => {
+    if (contactos.length > 0 && contactoSeleccionado === null) {
+      setContactoSeleccionado(contactos[0].id); // Establece el primer contacto como seleccionado
+    }
+  }, [contactos, contactoSeleccionado]);
+
 
   const handleNewMessage = (evento) => {
     evento.preventDefault();
