@@ -1,9 +1,11 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom'; // Asegúrate de importar react-router-dom
+import App from './App.jsx'; // Importa App.jsx correctamente
 
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <BrowserRouter> {/* Asegúrate de que BrowserRouter esté presente aquí */}
     <App />
-  </StrictMode>,
-)
+  </BrowserRouter>
+);
