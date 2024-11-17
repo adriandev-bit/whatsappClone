@@ -13,6 +13,8 @@ const ChatList = ({ contactos, contactoSeleccionado }) => {
     <>
       {/* Mostrar los mensajes del contacto seleccionado */}
       {contacto.mensajes.map((chat) => (
+        
+
         <div key={chat.id} className={`chat ${chat.emisor === 'Yo' ? 'sent' : 'received'}`}>
           <div className="chat-emisor">
             <span>{chat.emisor}</span>
@@ -42,6 +44,7 @@ const ChatList = ({ contactos, contactoSeleccionado }) => {
             </div>
           </div>
         </div>
+        
       ))}
     </>
   );
