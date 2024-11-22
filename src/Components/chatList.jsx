@@ -1,4 +1,5 @@
 import React from 'react';
+import './chatList.css';
 
 const ChatList = ({ contactos, contactoSeleccionado }) => {
   // Encontrar el contacto seleccionado

@@ -11,7 +11,7 @@ const ContactList = ({ contactos, contactoSeleccionado, handleSelectContact }) =
   };
 
   return (
-    <ul>
+    <ul className='contact-container'>
       {contactos.map((contacto) => (
         <li
           key={contacto.id}
@@ -19,9 +19,10 @@ const ContactList = ({ contactos, contactoSeleccionado, handleSelectContact }) =
           onClick={() => handleContactClick(contacto.id)} // Usamos la nueva función aquí
         >
           <div className="contact-info">
-            <div className="profile-pic"></div> {/* Puedes agregar una imagen de perfil aquí */}
-            
-            <div className="name">{contacto.nombre}</div>
+            <div className='contact-info-profile'>
+              <img className="profile-pic" src={contacto.imagen} alt="contactImage" />
+              <div className="name">{contacto.nombre}</div>
+            </div>
             <div className="ultimaConexion">{contacto.ultimaConexion}</div>
           </div>
         </li>
