@@ -16,7 +16,7 @@ const whatsappData = [
     imagen: 'https://randomuser.me/api/portraits/women/1.jpg', // URL de la imagen real
     mensajes: [
       { id: '1', emisor: 'Yo', texto: 'Hola, Sofía!', hora: '22:10', status: 'visto' },
-      { id: '2', emisor: 'Sofía', texto: '¿Qué tal?', hora: '22:12', status: 'no-visto' },
+      { id: '2', emisor: 'Sofía', texto: '¿Qué tal? lorem lorem¿Qué tal? lorem lorem¿Qué tal? lorem lorem¿Qué tal? lorem lorem¿Qué tal? lorem lorem', hora: '22:12', status: 'no-visto' },
     ]
   },
   { 

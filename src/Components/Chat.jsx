@@ -3,6 +3,22 @@ import React from 'react';
 import './Chat.css';
 
 const Chat = ({ chat }) => {
+
+  // Función para formatear la hora
+  const formatTime = (time) => {
+    const date = new Date(`1970-01-01T${time}:00`); // Usamos una fecha ficticia solo para manipular la hora.
+    let hours = date.getHours(); // Obtiene las horas en formato de 24 horas
+    let minutes = date.getMinutes();
+
+    // Formateamos los minutos para que siempre tenga dos dígitos
+    if (minutes < 10) {
+      minutes = `0${minutes}`;
+    }
+
+    // Devolvemos la hora en formato hh:mm sin AM/PM
+    return `${hours}:${minutes}`;
+  };
+
   return (
     <div key={chat.id} className={`chat ${chat.emisor === 'Yo' ? 'sent' : 'received'}`}>
       {/* <div className="chat-emisor">
@@ -13,7 +29,7 @@ const Chat = ({ chat }) => {
         <span>{chat.texto}</span>
         </div>
         <div className="chat-footer">
-          <span className='chat-hora'>hora: {chat.hora}</span>
+          <span className='chat-hora'>{formatTime(chat.hora)}</span>
           <span className='chat-icono'>
             {chat.emisor === 'Yo' && (
               chat.status === 'no-visto' ? (

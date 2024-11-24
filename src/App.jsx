@@ -32,7 +32,7 @@ function App() {
       id: (contactos.find(contacto => contacto.id === contactoSeleccionado).mensajes.length + 1).toString(),
       emisor: 'Yo',
       texto: nuevoMensaje,
-      hora: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+      hora: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false }), // Usamos hour12: false para formato de 24 horas
       status: 'no-visto'
     };
 

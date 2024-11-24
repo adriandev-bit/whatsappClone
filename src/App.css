@@ -58,6 +58,7 @@ body {
   overflow-y: auto;
   flex-grow: 1;
   background-color: var(--color-fondo-chat);
+  gap: 10px;
 }
 
 .chat-icono{
@@ -66,10 +67,11 @@ body {
 
 
 .chat-bubble{
-  max-width: 70%; /* Opcional: limita el tamaño del mensaje */
+  max-width: 95%; /* Opcional: limita el tamaño del mensaje */
   word-wrap: break-word; /* Rompe las palabras si son demasiado largas */
   display: inline-block; /* Ajuste automático al contenido */
   white-space: pre-line; /* Respeta los saltos de línea en el texto */
+
 }
 
 /* Estilo para el mensaje enviado */
@@ -78,14 +80,12 @@ body {
   flex-direction: row;
   background-color: var(--color-fondo-burbuja-enviada);
   color: var(--color-blanco-medio);
-  margin-right: 8px;
-  padding: 8px 16px;
   border-radius: 16px 16px 0 16px;
   font-size: 0.95em;
   align-self: flex-end;
-  justify-content: space-between;
-  max-width: 70%;
-  gap: 20px;
+padding: 10px;
+  max-width: 60%;
+  gap: 10px;
 }
 
 /* Estilo para el mensaje recibido */
@@ -95,12 +95,12 @@ body {
   background-color: var(--color-fondo-burbuja-recibida);
   color: var(--color-blanco);
   margin-left: 8px;
-  padding: 8px 16px;
+  padding: 10px;
   border-radius: 16px 16px 16px 0;
   font-size: 0.95em;
   align-self: flex-start;
-  justify-content: space-between;
-  max-width: 70%;
+  max-width: 60%;
+  gap: 10px;
 }
 
 .chat.sent .chat-footer{
