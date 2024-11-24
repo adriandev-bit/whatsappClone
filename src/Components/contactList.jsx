@@ -1,8 +1,12 @@
-import React from 'react';
+// ContactList.jsx
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ContactsContext } from '../Context/ContactsContext';
+import Contact from './Contact';
 
-const ContactList = ({ contactos, contactoSeleccionado, handleSelectContact }) => {
-  const navigate = useNavigate(); // Usamos el hook useNavigate de React Router
+const ContactList = ({ contactoSeleccionado, handleSelectContact }) => {
+  const navigate = useNavigate();
+  const { contacts_state } = useContext(ContactsContext); // Obtener contactos desde el contexto
 
   // Función que se ejecuta al hacer clic en un contacto
   const handleContactClick = (id) => {
@@ -11,23 +15,19 @@ const ContactList = ({ contactos, contactoSeleccionado, handleSelectContact }) =
   };
 
   return (
-    <ul className='contact-container'>
-      {contactos.map((contacto) => (
-        <li
+    <>
+      {contacts_state.map((contacto) => (
+        <Contact
           key={contacto.id}
-          className={`contact-item ${contactoSeleccionado === contacto.id ? 'selected' : ''}`}
-          onClick={() => handleContactClick(contacto.id)} // Usamos la nueva función aquí
-        >
-          <div className="contact-info">
-            <div className='contact-info-profile'>
-              <img className="profile-pic" src={contacto.imagen} alt="contactImage" />
-              <div className="name">{contacto.nombre}</div>
-            </div>
-            <div className="ultimaConexion">{contacto.ultimaConexion}</div>
-          </div>
-        </li>
+          id={contacto.id}
+          nombre={contacto.nombre}
+          imagen={contacto.imagen}
+          ultimaConexion={contacto.ultimaConexion}
+          handleContactClick={handleContactClick}
+          isSelected={contactoSeleccionado === contacto.id}
+        />
       ))}
-    </ul>
+    </>
   );
 };
 
