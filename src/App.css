@@ -1,322 +1,405 @@
- 
-/* Definir colores y fuentes en :root */
-:root {
-  /* Colores */
-  --color-fondo-general: #181818; /* Fondo oscuro para la aplicación */
-  --color-fondo-chat: #222f38; /* Fondo más oscuro para el chat */
-  --color-fondo-burbuja-enviada: #015c4c; /* Verde de WhatsApp para mensajes enviados */
-  --color-fondo-burbuja-recibida: #363636; /* Fondo blanco para mensajes recibidos */
-  --color-verde-whatsapp: #25d366; /* Verde característico de WhatsApp */
-  --color-verde-whatsapp-hover: #128c7e; /* Verde más oscuro cuando se pasa el ratón */
-  --color-borde-contacto: #333; /* Borde gris oscuro para los contactos */
-  --color-gris-claro: #454545; /* Gris claro */
-  --color-gris-medio: #383838; /* Gris intermedio para texto */
-  --color-gris-oscuro: #363636; /* Gris más claro para textos secundarios */
-  --color-blanco: #fff; /* Blanco para el texto de los contactos*/
-  --color-blanco-medio: #dadada; /* Blanco para el texto de los mensajes */
-  /* Fuentes */
-  --fuente-principal: 'Arial', sans-serif;
-  --fuente-secundaria: 'Verdana', sans-serif;
-}
+ /* Definir colores y fuentes en :root */
+ :root {
+   /* Colores */
+   --color-fondo-general: #181818;
+   /* Fondo oscuro para la aplicación */
+   --color-fondo-chat: #222f38;
+   /* Fondo más oscuro para el chat */
+   --color-fondo-burbuja-enviada: #015c4c;
+   /* Verde de WhatsApp para mensajes enviados */
+   --color-fondo-burbuja-recibida: #363636;
+   /* Fondo blanco para mensajes recibidos */
+   --color-verde-whatsapp: #25d366;
+   /* Verde característico de WhatsApp */
+   --color-verde-whatsapp-hover: #128c7e;
+   /* Verde más oscuro cuando se pasa el ratón */
+   --color-borde-contacto: #333;
+   /* Borde gris oscuro para los contactos */
+   --color-gris-claro: #454545;
+   /* Gris claro */
+   --color-gris-medio: #383838;
+   /* Gris intermedio para texto */
+   --color-gris-oscuro: #363636;
+   /* Gris más claro para textos secundarios */
+   --color-blanco: #fff;
+   /* Blanco para el texto de los contactos*/
+   --color-blanco-medio: #dadada;
+   /* Blanco para el texto de los mensajes */
+   /* Fuentes */
+   --fuente-principal: 'Arial', sans-serif;
+   --fuente-secundaria: 'Verdana', sans-serif;
+ }
 
-/* Tipos de letra */
-body {
-  font-family: var(--fuente-principal);
-  color: var(--color-blanco);
-}
+ /* Tipos de letra */
+ body {
+   font-family: var(--fuente-principal);
+   color: var(--color-blanco);
+ }
 
-
-
-/* Estilo para el contenedor general */
-.app-container {
-  display: flex;
-  height: 100vh;
-  background-color: var(--color-fondo-general);
-}
-
-
-
-/* Estilo para el contenedor del chat */
-.chat-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--color-gris-oscuro);
-  height: 100vh;
-  box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-  max-width: calc(100% - 300px); /* Limitar el ancho del chat al ancho disponible */
-  box-sizing: border-box;
-}
+ body,
+ html {
+   margin: 0;
+   padding: 0;
+   height: 100%;
+   overflow: hidden;
+ }
 
 
 
-/* Historial de chat */
-.chat-history {
-  display: flex;
-  flex-direction: column;
-  padding: 10px;
-  overflow-y: auto;
-  flex-grow: 1;
-  background-color: var(--color-fondo-chat);
-  gap: 10px;
-}
-
-.chat-icono{
-  color: #fff;
-}
+ /* Estilo para el contenedor general */
+ .app-container {
+   display: flex;
+   flex-direction: row;
+   height: 100vh;
+   width: 100%;
+   background-color: var(--color-fondo-general);
+   overflow-x: hidden;
+ }
 
 
-.chat-bubble{
-  max-width: 95%; /* Opcional: limita el tamaño del mensaje */
-  word-wrap: break-word; /* Rompe las palabras si son demasiado largas */
-  display: inline-block; /* Ajuste automático al contenido */
-  white-space: pre-line; /* Respeta los saltos de línea en el texto */
+ /* Contenedor de los contactos */
 
-}
-
-/* Estilo para el mensaje enviado */
-.chat.sent {
-  display: flex;
-  flex-direction: row;
-  background-color: var(--color-fondo-burbuja-enviada);
-  color: var(--color-blanco-medio);
-  border-radius: 16px 16px 0 16px;
-  font-size: 0.95em;
-  align-self: flex-end;
-padding: 10px;
-  max-width: 60%;
-  gap: 10px;
-}
-
-/* Estilo para el mensaje recibido */
-.chat.received {
-  display: flex;
-  flex-direction: row;
-  background-color: var(--color-fondo-burbuja-recibida);
-  color: var(--color-blanco);
-  margin-left: 8px;
-  padding: 10px;
-  border-radius: 16px 16px 16px 0;
-  font-size: 0.95em;
-  align-self: flex-start;
-  max-width: 60%;
-  gap: 10px;
-}
-
-.chat.sent .chat-footer{
-  display: flex;
-  flex-direction:row;
-  gap: 10px;
-  align-items: center;
-
-}
-
-.chat-hora{
-
-  font-size: 10px;
-  color: var(--color-blanco-medio);
-}
-
-
-
-
-/* Barra para enviar mensaje */
-.send-message {
-position: relative;
-padding: 5px;
-background-color: var(--color-fondo-general);
-border-top: 1px solid var(--color-borde-contacto);
-display: flex;
-flex-direction: row;
-align-items: center;
-z-index: 1000;
-box-shadow: 0px -1px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Barra de iconos */
-.icon-buttons {
-display: flex;
-align-items: center; /* Centra los iconos verticalmente */
-gap: 10px;  /* Ajusta el espacio entre los iconos */
-margin-right: 10px; /* Ajusta el margen derecho para los iconos */
-
-}
-
-/* Estilo para cada icono dentro de la barra */
-.icon-buttons button  {
-background: none;
-border: none;
-cursor: pointer;
-padding: 5px; /* Espaciado alrededor del icono */
-color: var(--color-blanco);  /* Asegura que los iconos sean blancos */
-font-size: 1.3em; /* Tamaño de icono similar a WhatsApp */
-transition: background-color 0.2s ease;
-color: var(--color-blanco-medio);
-}
-
-/* Efecto hover para los iconos */
-.icon-buttons button:hover {
-border-radius: 10%; /* Forma circular en el hover */
-padding: 5px;
-}
-
-
-/* Campo de texto */
-.send-message input {
-flex: 1;  /* Esto asegura que el input ocupe el espacio disponible */
-padding: 10px;
-border-radius: 5px;
-font-size: 16px;
-color: white;
-background-color: var(--color-fondo-general);
-border: none;
-margin-right: 10px;  /* Espacio entre el input y el botón de enviar */
-outline: none;  /* Evita el borde azul predeterminado al hacer foco */
-}
-
-/* Formulario para el envío de mensaje */
-.send-message form {
-display: flex;
-width: 100%;  /* Asegura que el formulario ocupe el espacio completo de la barra */
-}
-
-
-
-
-/* Contenedor de los contactos */
-
-
-
-.contact-list {
-    width: 25%;
-    background-color: var(--color-fondo-general);
-    border-right: 1px solid var(--color-gris-oscuro);
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
-  
-  .contact-list-title{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: var(--color-blanco-medio);
-  }
-  
-  .contact-list-title-icons{
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
-  }
-  
-  .contact-search{
-    display: flex;
-    position: relative;
-    width: 100%;
-  }
-  
-  .contact-search-input{
-    width: 90%;
-    padding: 12px 12px 12px 35px;
-    background-color: var(--color-fondo-chat);
-    color: var(--color-blanco);
-    border: 1px solid transparent;
-    border-radius: 10px;
-    outline: none; /* Eliminar el borde de enfoque predeterminado */
-  }
-  
-  /* Solo cambia el borde, sin modificar el fondo */
-  .contact-search:focus {
-    background-color: var(--color-fondo-chat); /* Mantén el fondo igual */
-    border: 1px solid transparent;
-    outline: none; /* Asegúrate de que no aparezca un borde adicional */
-  }
-  
-  .contact-search-icon {
-    position: absolute;  /* Posición absoluta sobre el input */
-    top: 50%;  /* Centrado verticalmente en el input */
-    left: 10px;  /* Alineación a la izquierda del input */
-    transform: translateY(-50%);  /* Centra el ícono verticalmente */
-    color: var(--color-blanco);  /* Color del ícono */
-    z-index: 1;  /* Asegura que el ícono esté por encima del input */
-    pointer-events: none;  /* Evita que el ícono interfiera con el clic en el input */
-  }
-  
-  
-  /* Estilos de cada item de contacto */
-  
-  .contact-container{
-      padding: 0px;
-      margin-top: 10px;
-  }
-  
-  .contact-item {
-    display: flex;
-    align-items: center;
-    width: 100%;
-    justify-content: space-between;
-    padding: 12px 15px;
-    cursor: pointer;
-    color: var(--color-blanco-medio);
-    margin-bottom: 10px;
-    margin-right: 10px;
-    border-bottom: 1px solid var(--color-gris-medio);  /* Adds a 1px solid line above */
-  }
-  
-  .contact-item:hover {
-    background-color: var(--color-gris-medio);
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-    width: 280px;
-  }
-  
-  .contact-item.selected {
-    background-color: var(--color-gris-claro);
+ .contact-list {
+   width: 400px;
+   background-color: var(--color-fondo-general);
+   border-right: 1px solid var(--color-gris-oscuro);
+   padding: 20px;
+   box-sizing: border-box;
+   overflow-y: hidden;
+   overflow-x: hidden;
   margin: 0px;
-    padding: 10px;
-  }
-  
-  .contact-info {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    padding: 10px;
-    margin: 0px;
-    width: 100%;
-    gap: 20px;
-    justify-content: space-between;
-  }
-  
-  .contact-info-profile{
-    display: flex;
-    flex-direction: row;
-  }
-  
-  .contact-item .contact-info .profile-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--color-gris-oscuro);
-    margin-right: 10px;
-  }
-  
-  .contact-item .contact-info .name {
-    font-weight: 600;
-    font-size: 16px;
-    color: var(--color-blanco);
-  }
-  
-  .contact-item .contact-info .last-seen {
-    font-size: 12px;
-    color: var(--color-gris-oscuro);
-  }
-  
-  .contact-item .status {
-    font-size: 14px;
-    color: var(--color-verde-whatsapp);
-  }
+ }
+
+
+ .contact-list-title {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   color: var(--color-blanco-medio);
+ }
+
+ .contact-list-title-icons {
+   display: flex;
+   flex-direction: row;
+   gap: 20px;
+ }
+
+ .contact-search {
+   display: flex;
+   position: relative;
+   width: 100%;
+ }
+
+ .contact-search-input {
+   width: 90%;
+   padding: 12px 12px 12px 35px;
+   background-color: var(--color-fondo-chat);
+   color: var(--color-blanco);
+   border: 1px solid transparent;
+   border-radius: 10px;
+   outline: none;
+   /* Eliminar el borde de enfoque predeterminado */
+ }
+
+ /* Solo cambia el borde, sin modificar el fondo */
+ .contact-search:focus {
+   background-color: var(--color-fondo-chat);
+   /* Mantén el fondo igual */
+   border: 1px solid transparent;
+   outline: none;
+   /* Asegúrate de que no aparezca un borde adicional */
+ }
+
+ .contact-search-icon {
+   position: absolute;
+   /* Posición absoluta sobre el input */
+   top: 50%;
+   /* Centrado verticalmente en el input */
+   left: 10px;
+   /* Alineación a la izquierda del input */
+   transform: translateY(-50%);
+   /* Centra el ícono verticalmente */
+   color: var(--color-blanco);
+   /* Color del ícono */
+   z-index: 1;
+   /* Asegura que el ícono esté por encima del input */
+   pointer-events: none;
+   /* Evita que el ícono interfiera con el clic en el input */
+ }
+
+
+ /* Estilos de cada item de contacto */
+
+ .contact-container {
+   overflow-y: scroll;
+   /* Asegura que el scroll sea visible en caso de contenido desbordado */
+   overflow-x: hidden;
+   scrollbar-width: thin;
+   /* Para navegadores que soportan la propiedad */
+   scrollbar-color: var(--color-gris-oscuro) transparent;
+   /* Color del track y thumb */
+
+   height: 500px;
+ }
+
+ .contact-list {
+   padding: 5px;
+   margin: 10px 0px 0px;
+
+ }
+
+ .contact-item {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   width: 95%;
+   justify-content: space-between;
+   cursor: pointer;
+   color: var(--color-blanco-medio);
+   margin-bottom: 10px;
+   margin-right: 20px;
+
+   border-bottom: 1px solid var(--color-gris-medio);
+   /* Adds a 1px solid line above */
+ }
+
+ .contact-item:hover {
+   background-color: var(--color-gris-medio);
+   box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+
+ }
+
+ .contact-item.selected {
+   background-color: var(--color-gris-claro);
+
+
+ }
+
+ .contact-info {
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+   padding: 10px;
+   margin: 0px;
+   width: 100%;
+   gap: 20px;
+   justify-content: space-between;
+ }
+
+ .contact-info-profile {
+   display: flex;
+   flex-direction: row;
+ }
+
+ .contact-item .contact-info .profile-pic {
+   width: 40px;
+   height: 40px;
+   border-radius: 50%;
+   background-color: var(--color-gris-oscuro);
+   margin-right: 10px;
+ }
+
+ .contact-item .contact-info .name {
+   font-weight: 600;
+   font-size: 16px;
+   color: var(--color-blanco);
+ }
+
+ .contact-item .contact-info .last-seen {
+   font-size: 12px;
+   color: var(--color-gris-oscuro);
+ }
+
+ .contact-item .status {
+   font-size: 14px;
+   color: var(--color-verde-whatsapp);
+ }
+
+
+ /* Estilo para la barra superior del contenedor del chat */
+
+ .contact-bar {
+   display: flex;
+   align-items: center;
+   /* Alinea verticalmente los elementos */
+   background-color: var(--color-gris-oscuro);
+   /* Color de fondo de la barra */
+   padding: 10px 20px;
+   /* Espaciado alrededor de los elementos */
+   border-bottom: 1px solid #e0e0e0;
+   /* Línea sutil debajo */
+ }
+
+ .contact-photo {
+   width: 40px;
+   /* Tamaño de la imagen del contacto */
+   height: 40px;
+   /* Mantener proporción cuadrada */
+   border-radius: 50%;
+   /* Hacer la imagen circular */
+   margin-right: 10px;
+   /* Espacio entre la foto y el nombre */
+ }
+
+ .contact-name {
+   font-size: 16px;
+   /* Tamaño de fuente del nombre */
+   font-weight: 500;
+   /* Peso de fuente para hacerlo más visible */
+   color: var(--color-blanco);
+   /* Color del nombre (oscuro para contraste) */
+ }
 
 
 
 
+ /* Estilo para el contenedor del chat */
+ .chat-container {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+   background-color: var(--color-gris-oscuro);
+   height: 100vh;
+   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+   max-width: calc(100% - 300px);
+   box-sizing: border-box;
+ }
 
+
+ /* Historial de chat */
+ .chat-history {
+   display: flex;
+   flex-direction: column;
+   width: auto;
+   padding: 10px;
+   background-color: var(--color-fondo-chat);
+   gap: 10px;
+   scrollbar-width: thin;
+   scrollbar-color: var(--color-gris-oscuro) transparent;
+   max-height: 80vh; /* Limita la altura a un 80% de la altura del viewport */
+   overflow-y: auto; /* Activa el scroll solo cuando el contenido excede el max-height */
+   height: 100%;
+ }
+
+ .chat-icono {
+   color: #fff;
+ }
+
+
+ .chat-bubble {
+   max-width: 95%;
+   /* Opcional: limita el tamaño del mensaje */
+   word-wrap: break-word;
+   /* Rompe las palabras si son demasiado largas */
+   display: inline-block;
+   /* Ajuste automático al contenido */
+   white-space: pre-line;
+   /* Respeta los saltos de línea en el texto */
+
+ }
+
+ /* Estilo para el mensaje enviado */
+ .chat.sent {
+   display: flex;
+   flex-direction: row;
+   background-color: var(--color-fondo-burbuja-enviada);
+   color: var(--color-blanco-medio);
+   border-radius: 16px 16px 0 16px;
+   font-size: 0.95em;
+   align-self: flex-end;
+   padding: 10px;
+   max-width: 60%;
+   gap: 10px;
+ }
+
+ /* Estilo para el mensaje recibido */
+ .chat.received {
+   display: flex;
+   flex-direction: row;
+   background-color: var(--color-fondo-burbuja-recibida);
+   color: var(--color-blanco);
+   margin-left: 8px;
+   padding: 10px;
+   border-radius: 16px 16px 16px 0;
+   font-size: 0.95em;
+   align-self: flex-start;
+   max-width: 60%;
+   gap: 10px;
+ }
+
+ .chat.sent .chat-footer {
+   display: flex;
+   flex-direction: row;
+   gap: 10px;
+   align-items: center;
+
+ }
+
+ .chat-hora {
+
+   font-size: 10px;
+   color: var(--color-blanco-medio);
+ }
+
+
+
+
+ /* Barra para enviar mensaje */
+ .send-message {
+   display: flex;
+   flex-direction: row;
+   position: relative;
+   padding: 5px;
+   background-color: var(--color-fondo-general);
+   align-items: center;
+   z-index: 1000;
+ }
+
+ /* Barra de iconos */
+ .icon-buttons {
+   display: flex;
+   align-items: center;
+   gap: 10px;
+   margin-right: 10px;
+ }
+
+ /* Estilo para cada icono dentro de la barra */
+ .icon-buttons button {
+   background: none;
+   border: none;
+   cursor: pointer;
+   padding: 5px;
+   color: var(--color-blanco);
+   font-size: 1.3em;
+   transition: background-color 0.2s ease;
+   color: var(--color-blanco-medio);
+ }
+
+ /* Efecto hover para los iconos */
+ .icon-buttons button:hover {
+   border-radius: 10%;
+   padding: 5px;
+ }
+
+
+ /* Campo de texto */
+ .send-message input {
+   flex: 1;
+   padding: 10px;
+   border-radius: 5px;
+   font-size: 16px;
+   color: white;
+   background-color: var(--color-fondo-general);
+   border: none;
+   margin-right: 10px;
+   /* Espacio entre el input y el botón de enviar */
+   outline: none;
+   /* Evita el borde azul predeterminado al hacer foco */
+ }
+
+ /* Formulario para el envío de mensaje */
+ .send-message form {
+   display: flex;
+   width: 100%;
+   /* Asegura que el formulario ocupe el espacio completo de la barra */
+ }
