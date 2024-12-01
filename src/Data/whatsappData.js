@@ -43,7 +43,6 @@ const whatsappData = [
       { id: '3', emisor: 'Yo', texto: 'Muy bien, gracias por preguntar. ¿Y tú?', hora: '22:14', status: 'visto' },
     ]
   },
-  // Nuevos contactos añadidos
   { 
     id: '5', 
     nombre: 'Carlos', 
@@ -80,6 +79,51 @@ const whatsappData = [
   },
   { 
     id: '8', 
+    nombre: 'Ana', 
+    ultimaConexion: '16:00',
+    imagen: 'https://randomuser.me/api/portraits/women/4.jpg',
+    mensajes: [
+      { id: '1', emisor: 'Yo', texto: 'Hola, Ana!', hora: '22:30', status: 'visto' },
+      { id: '2', emisor: 'Ana', texto: 'Hola, ¿cómo estás?', hora: '22:32', status: 'no-visto' },
+      { id: '3', emisor: 'Yo', texto: 'Todo bien, gracias por preguntar.', hora: '22:35', status: 'visto' },
+    ]
+  },
+  { 
+    id: '9', 
+    nombre: 'Carlos', 
+    ultimaConexion: '23:00',
+    imagen: 'https://randomuser.me/api/portraits/men/3.jpg',
+    mensajes: [
+      { id: '1', emisor: 'Yo', texto: 'Hola, Carlos!', hora: '22:15', status: 'visto' },
+      { id: '2', emisor: 'Carlos', texto: 'Hola, ¿todo bien?', hora: '22:16', status: 'no-visto' },
+      { id: '3', emisor: 'Yo', texto: 'Todo tranquilo, ¿y tú?', hora: '22:17', status: 'visto' },
+      { id: '4', emisor: 'Carlos', texto: 'Todo perfecto, gracias!', hora: '22:18', status: 'no-visto' },
+    ]
+  },
+  { 
+    id: '10', 
+    nombre: 'Laura', 
+    ultimaConexion: '18:30',
+    imagen: 'https://randomuser.me/api/portraits/women/3.jpg',
+    mensajes: [
+      { id: '1', emisor: 'Yo', texto: 'Hola, Laura!', hora: '22:20', status: 'visto' },
+      { id: '2', emisor: 'Laura', texto: 'Hola, ¿cómo te va?', hora: '22:22', status: 'no-visto' },
+      { id: '3', emisor: 'Yo', texto: 'Bien, ¿y tú?', hora: '22:24', status: 'visto' },
+    ]
+  },
+  { 
+    id: '11', 
+    nombre: 'Felipe', 
+    ultimaConexion: '17:45',
+    imagen: 'https://randomuser.me/api/portraits/men/4.jpg',
+    mensajes: [
+      { id: '1', emisor: 'Yo', texto: 'Hola, Felipe!', hora: '22:25', status: 'visto' },
+      { id: '2', emisor: 'Felipe', texto: '¿Cómo te va?', hora: '22:26', status: 'no-visto' },
+      { id: '3', emisor: 'Yo', texto: 'Todo bien, ¿y tú?', hora: '22:27', status: 'visto' },
+    ]
+  },
+  { 
+    id: '12', 
     nombre: 'Ana', 
     ultimaConexion: '16:00',
     imagen: 'https://randomuser.me/api/portraits/women/4.jpg',

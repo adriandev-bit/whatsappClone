@@ -1,7 +1,8 @@
  /* Definir colores y fuentes en :root */
  :root {
    /* Colores */
-   --color-fondo-general: #181818;
+   --color-fondo-aside-top-bottom: #1f2c34;  
+   --color-fondo-contact-list: #121b22;
    /* Fondo oscuro para la aplicación */
    --color-fondo-chat: #222f38;
    /* Fondo más oscuro para el chat */
@@ -54,21 +55,13 @@
    width: 100%;
    background-color: var(--color-fondo-general);
    overflow-x: hidden;
+   overflow-y: hidden;
  }
 
 
  /* Contenedor de los contactos */
 
- .contact-list {
-   width: 400px;
-   background-color: var(--color-fondo-general);
-   border-right: 1px solid var(--color-gris-oscuro);
-   padding: 20px;
-   box-sizing: border-box;
-   overflow-y: hidden;
-   overflow-x: hidden;
-  margin: 0px;
- }
+
 
 
  .contact-list-title {
@@ -76,6 +69,7 @@
    align-items: center;
    justify-content: space-between;
    color: var(--color-blanco-medio);
+   padding: 10px;
  }
 
  .contact-list-title-icons {
@@ -112,56 +106,57 @@
 
  .contact-search-icon {
    position: absolute;
-   /* Posición absoluta sobre el input */
    top: 50%;
-   /* Centrado verticalmente en el input */
    left: 10px;
-   /* Alineación a la izquierda del input */
    transform: translateY(-50%);
-   /* Centra el ícono verticalmente */
    color: var(--color-blanco);
-   /* Color del ícono */
    z-index: 1;
-   /* Asegura que el ícono esté por encima del input */
    pointer-events: none;
-   /* Evita que el ícono interfiera con el clic en el input */
  }
 
 
  /* Estilos de cada item de contacto */
 
+
  .contact-container {
-   overflow-y: scroll;
-   /* Asegura que el scroll sea visible en caso de contenido desbordado */
-   overflow-x: hidden;
-   scrollbar-width: thin;
-   /* Para navegadores que soportan la propiedad */
-   scrollbar-color: var(--color-gris-oscuro) transparent;
-   /* Color del track y thumb */
-
-   height: 500px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0px;
+  box-sizing: border-box;
+  background-color: var(--color-fondo-contact-list);
+  width: 400px;
  }
 
- .contact-list {
-   padding: 5px;
-   margin: 10px 0px 0px;
+.contact-list{
+  display: flex;
+   flex-direction: column;
+  height: 100%;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-gris-oscuro) transparent;
+  max-height: 80vh;
+  width: 400px;
+  
+}
 
- }
-
- .contact-item {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   width: 95%;
-   justify-content: space-between;
-   cursor: pointer;
-   color: var(--color-blanco-medio);
-   margin-bottom: 10px;
-   margin-right: 20px;
-
-   border-bottom: 1px solid var(--color-gris-medio);
-   /* Adds a 1px solid line above */
- }
+.contact-box{
+ padding:  0px;
+ margin: 0px;
+ 
+}
+ 
+.contact-item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 95%;
+  justify-content: space-between;
+  cursor: pointer;
+  color: var(--color-blanco-medio);
+  border-bottom: 1px solid var(--color-gris-medio);
+  /* Adds a 1px solid line above */
+}
 
  .contact-item:hover {
    background-color: var(--color-gris-medio);
@@ -171,8 +166,6 @@
 
  .contact-item.selected {
    background-color: var(--color-gris-claro);
-
-
  }
 
  .contact-info {
@@ -221,13 +214,8 @@
  .contact-bar {
    display: flex;
    align-items: center;
-   /* Alinea verticalmente los elementos */
-   background-color: var(--color-gris-oscuro);
-   /* Color de fondo de la barra */
+   background-color: var(--color-fondo-aside-top-bottom);
    padding: 10px 20px;
-   /* Espaciado alrededor de los elementos */
-   border-bottom: 1px solid #e0e0e0;
-   /* Línea sutil debajo */
  }
 
  .contact-photo {
@@ -350,7 +338,7 @@
    flex-direction: row;
    position: relative;
    padding: 5px;
-   background-color: var(--color-fondo-general);
+   background-color: var(--color-fondo-aside-top-bottom);
    align-items: center;
    z-index: 1000;
  }

@@ -31,7 +31,7 @@ const ContactList = ({ contactoSeleccionado, handleSelectContact }) => {
         </div>
 
       </div>
-      <div className='contact-container'>
+      <div className='contact-list'>
       {contacts_state.map((contacto) => (
         <Contact
           key={contacto.id}

@@ -12,7 +12,7 @@ const Contact = ({ id, nombre, imagen, ultimaConexion, handleContactClick, isSel
     
     <div >
 
-      <ul className='contact-list'>
+      <ul className='contact-box'>
         <li
           className={`contact-item ${isSelected ? 'selected' : ''}`}
           onClick={() => handleContactClick(id)}

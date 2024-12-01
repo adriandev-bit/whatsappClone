@@ -67,7 +67,7 @@ function App() {
   return (
     <div className="app-container">
       {/* Contenedor de contactos */}
-      <div className="contact-list">
+      <div className="contact-container">
 
         <ContactList
           contactos={contactos}
