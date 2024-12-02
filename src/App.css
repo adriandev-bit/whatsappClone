@@ -69,19 +69,27 @@
    align-items: center;
    justify-content: space-between;
    color: var(--color-blanco-medio);
-   padding: 10px;
+   padding: 2px;
+   margin-left: 10px;
  }
 
  .contact-list-title-icons {
    display: flex;
    flex-direction: row;
+   margin-right: 10px;
    gap: 20px;
  }
+
+ .contact-list-title-icons span{
+  cursor: pointer;
+}
+
 
  .contact-search {
    display: flex;
    position: relative;
-   width: 100%;
+   width: 95%;
+   margin: 0px 10px 10px 10px;
  }
 
  .contact-search-input {
@@ -92,16 +100,13 @@
    border: 1px solid transparent;
    border-radius: 10px;
    outline: none;
-   /* Eliminar el borde de enfoque predeterminado */
  }
 
- /* Solo cambia el borde, sin modificar el fondo */
+
  .contact-search:focus {
    background-color: var(--color-fondo-chat);
-   /* Mantén el fondo igual */
    border: 1px solid transparent;
    outline: none;
-   /* Asegúrate de que no aparezca un borde adicional */
  }
 
  .contact-search-icon {
@@ -109,11 +114,27 @@
    top: 50%;
    left: 10px;
    transform: translateY(-50%);
-   color: var(--color-blanco);
+   color: var(--color-blanco-medio);
    z-index: 1;
    pointer-events: none;
  }
 
+ .contact-list-bubbles{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin-left: 15px;
+  margin-bottom: 10px;
+ 
+ }
+
+ .contact-list-bubbles span{
+  background-color: var(--color-fondo-chat);
+  padding: 10px;
+  border-radius: 20px;
+  color: var(--color-blanco-medio);
+ }
 
  /* Estilos de cada item de contacto */
 
@@ -133,6 +154,7 @@
    flex-direction: column;
   height: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   scrollbar-width: thin;
   scrollbar-color: var(--color-gris-oscuro) transparent;
   max-height: 80vh;
@@ -150,12 +172,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 95%;
+  width: 100%;
+  margin-left: 10px;
   justify-content: space-between;
   cursor: pointer;
   color: var(--color-blanco-medio);
   border-bottom: 1px solid var(--color-gris-medio);
-  /* Adds a 1px solid line above */
 }
 
  .contact-item:hover {
@@ -208,6 +230,15 @@
    color: var(--color-verde-whatsapp);
  }
 
+.name{
+  margin-top: 10px;
+}
+
+ .ultimaConexion{
+  font-size: 12px;
+  margin-right: 10px;
+ }
+
 
  /* Estilo para la barra superior del contenedor del chat */
 
@@ -216,29 +247,37 @@
    align-items: center;
    background-color: var(--color-fondo-aside-top-bottom);
    padding: 10px 20px;
+   justify-content: space-between;
  }
 
- .contact-photo {
+ .contact-bar-description{
+  display: flex;
+  align-items: center;
+  gap:10px;
+ }
+
+ .contact-bar-photo {
    width: 40px;
-   /* Tamaño de la imagen del contacto */
    height: 40px;
-   /* Mantener proporción cuadrada */
    border-radius: 50%;
-   /* Hacer la imagen circular */
    margin-right: 10px;
-   /* Espacio entre la foto y el nombre */
  }
 
- .contact-name {
+ .contact-bar-name {
    font-size: 16px;
-   /* Tamaño de fuente del nombre */
    font-weight: 500;
-   /* Peso de fuente para hacerlo más visible */
    color: var(--color-blanco);
-   /* Color del nombre (oscuro para contraste) */
  }
 
+ .contact-bar-icons{
+  display: flex;
+  flex-direction: row;
+  gap:20px;
+ }
 
+ .contact-bar-icons div{
+  cursor: pointer;
+ }
 
 
  /* Estilo para el contenedor del chat */
@@ -260,7 +299,10 @@
    flex-direction: column;
    width: auto;
    padding: 10px;
-   background-color: var(--color-fondo-chat);
+   background-image: url('Data/Background.png'); /* Ruta de tu imagen */
+   background-size: cover;  /* Asegura que la imagen cubra todo el contenedor */
+   background-position: center center;  /* Centra la imagen en el contenedor */
+   background-repeat: no-repeat;  /* Evita que la imagen se repita */
    gap: 10px;
    scrollbar-width: thin;
    scrollbar-color: var(--color-gris-oscuro) transparent;
