@@ -1,8 +1,8 @@
-// ContactList.jsx
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ContactsContext } from '../Context/ContactsContext';
 import Contact from './Contact';
+
 
 const ContactList = ({ contactoSeleccionado, handleSelectContact }) => {
   const navigate = useNavigate();
@@ -13,6 +13,13 @@ const ContactList = ({ contactoSeleccionado, handleSelectContact }) => {
     handleSelectContact(id); // Seleccionamos el contacto
     navigate(`/contacto/${id}`); // Navegamos a la página del contacto con su id
   };
+
+   // Estado para manejar si el input está enfocado o no
+   const [isFocused, setIsFocused] = useState(false);
+   
+    // Cambiar el estado cuando el input recibe o pierde el foco
+    const handleFocus = () => setIsFocused(true);
+    const handleBlur = () => setIsFocused(false);
 
   return (
     <>
@@ -25,9 +32,20 @@ const ContactList = ({ contactoSeleccionado, handleSelectContact }) => {
           </div>
         </div>
         <div className="contact-search">
-
-          <div className="contact-search-icon"><span aria-hidden="true" data-icon="search" class=""><svg viewBox="0 0 24 24" height="24" width="24" preserveAspectRatio="xMidYMid meet" class="" version="1.1" x="0px" y="0px" enable-background="new 0 0 24 24"><title>search</title><path fill="currentColor" d="M15.009,13.805h-0.636l-0.22-0.219c0.781-0.911,1.256-2.092,1.256-3.386 c0-2.876-2.332-5.207-5.207-5.207c-2.876,0-5.208,2.331-5.208,5.207s2.331,5.208,5.208,5.208c1.293,0,2.474-0.474,3.385-1.255 l0.221,0.22v0.635l4.004,3.999l1.194-1.195L15.009,13.805z M10.201,13.805c-1.991,0-3.605-1.614-3.605-3.605 s1.614-3.605,3.605-3.605s3.605,1.614,3.605,3.605S12.192,13.805,10.201,13.805z"></path></svg></span></div>
-          <input className="contact-search-input" type="text" placeholder="Buscar" />
+          <div className="contact-search-icon">
+            {/* Aquí cambiamos el ícono dependiendo del estado */}
+            {isFocused ? (
+    <span aria-hidden="true" className="arrow-left">
+    {/* Flecha verde hacia la izquierda */}
+    <svg viewBox="0 0 24 24" height="24" width="24" preserveAspectRatio="xMidYMid meet" class="" fill="currentColor">
+      <path d="M15,18l-6-6l6-6" stroke="green" strokeWidth="2" fill="none" />
+    </svg>
+  </span>
+            ) : (
+<svg viewBox="0 0 24 24" height="24" width="24" preserveAspectRatio="xMidYMid meet" class="" version="1.1" x="0px" y="0px" enable-background="new 0 0 24 24"><title>search</title><path fill="currentColor" d="M15.009,13.805h-0.636l-0.22-0.219c0.781-0.911,1.256-2.092,1.256-3.386 c0-2.876-2.332-5.207-5.207-5.207c-2.876,0-5.208,2.331-5.208,5.207s2.331,5.208,5.208,5.208c1.293,0,2.474-0.474,3.385-1.255 l0.221,0.22v0.635l4.004,3.999l1.194-1.195L15.009,13.805z M10.201,13.805c-1.991,0-3.605-1.614-3.605-3.605 s1.614-3.605,3.605-3.605s3.605,1.614,3.605,3.605S12.192,13.805,10.201,13.805z"></path></svg>
+            )}
+          </div>
+          <input className="contact-search-input" type="text" placeholder="Buscar"  onFocus={handleFocus} onBlur={handleBlur}/>
         </div>
         <div className="contact-list-bubbles">
           <span>Todos</span>

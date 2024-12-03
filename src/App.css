@@ -100,6 +100,7 @@
    border: 1px solid transparent;
    border-radius: 10px;
    outline: none;
+   margin-left: 15px;
  }
 
 
@@ -112,7 +113,7 @@
  .contact-search-icon {
    position: absolute;
    top: 50%;
-   left: 10px;
+   left: 20px;
    transform: translateY(-50%);
    color: var(--color-blanco-medio);
    z-index: 1;
