@@ -46,7 +46,7 @@ const ContactList = ({ contactoSeleccionado, handleSelectContact }) => {
 
         {/* Menú desplegable */}
         {isMenuOpen && (
-          <div className="menu-dropdown">
+          <div className="menu-contact-dropdown">
             <ul>
               <li><a href="#Nuevo Grupo">Nuevo Grupo</a></li>
               <li><a href="#Mensajes destacados">Mensajes destacados</a></li>
