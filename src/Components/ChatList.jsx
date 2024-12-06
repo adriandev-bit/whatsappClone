@@ -1,11 +1,15 @@
 // ChatList.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+
 import Chat from './Chat';
 
 const ChatList = ({ contactos, contactoSeleccionado, nuevoMensaje, setNuevoMensaje, handleNewMessage }) => {
 
    // Estado para controlar la visibilidad del dropdown
    const [dropdownVisible, setDropdownVisible] = useState(false);
+
+   // Ref para el contenedor del dropdown
+  const dropdownRef = useRef(null);
 
   // Encontrar el contacto seleccionado
   const contacto = contactos.find((contacto) => contacto.id === contactoSeleccionado);
@@ -19,6 +23,24 @@ const ChatList = ({ contactos, contactoSeleccionado, nuevoMensaje, setNuevoMensa
     const toggleDropdown = () => {
       setDropdownVisible((prevState) => !prevState);
     };
+
+    // Efecto para manejar clics fuera del dropdown
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      // Verifica si el clic fue fuera del dropdown
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownVisible(false); // Ocultar el dropdown si se hace clic fuera
+      }
+    };
+
+    // Agregar el eventListener cuando el componente se monte
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Limpiar el eventListener cuando el componente se desmonte
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -52,7 +74,7 @@ const ChatList = ({ contactos, contactoSeleccionado, nuevoMensaje, setNuevoMensa
 
        {/* Dropdown de opciones que se despliega cuando se hace clic en el menú hamburguesa */}
        {dropdownVisible && (
-        <div className={`dropdown-menu-chat ${dropdownVisible ? 'show' : ''}`}>
+        <div className={`dropdown-menu-chat ${dropdownVisible ? 'show' : ''}`} ref={dropdownRef}>
             <ul>
               <li><a href="#Info. del Conctacto">Info. del Conctacto</a></li>
               <li><a href="#Seleccionar mensajes">Seleccionar mensajes</a></li>

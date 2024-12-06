@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ContactsContext } from '../Context/ContactsContext';
 import Contact from './Contact';
@@ -20,12 +20,32 @@ const ContactList = ({ contactoSeleccionado, handleSelectContact }) => {
    // Estado para manejar la visibilidad del menú
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+   // Referencia para el menú
+   const menuRef = useRef(null);
+
   // Cambiar el estado cuando el input recibe o pierde el foco
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
    // Función para alternar la visibilidad del menú
    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+
+     // Hook para manejar el clic fuera del menú
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false); // Cerrar el menú si el clic fue fuera de él
+      }
+    };
+
+    // Agregar el evento de clic
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // Limpiar el evento al desmontar el componente
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
 
   return (
     <>
@@ -46,7 +66,7 @@ const ContactList = ({ contactoSeleccionado, handleSelectContact }) => {
 
         {/* Menú desplegable */}
         {isMenuOpen && (
-          <div className="menu-contact-dropdown">
+          <div ref={menuRef} className="menu-contact-dropdown">
             <ul>
               <li><a href="#Nuevo Grupo">Nuevo Grupo</a></li>
               <li><a href="#Mensajes destacados">Mensajes destacados</a></li>
